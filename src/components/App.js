@@ -5,7 +5,7 @@ const App = () => {
   const [category, setCategory] = useState("general");
   const [newsData, setNewsData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const apiKey = "554d26dd728d3bb26aa1f861859a1810";
+  const apiKey = "bfef9e159a631389f68e80fe31cc1dfd";
 
   useEffect(() => {
     setLoading(true);
@@ -18,7 +18,7 @@ const App = () => {
         setLoading(false);
       })
       .catch((err) => console.log(err));
-  }, [category]);
+  }, [category, apiKey]);
 
   const handleCategoryChange = (e) => {
     setCategory(e.target.value);
@@ -41,14 +41,20 @@ const App = () => {
         <ol>
           {newsData.map((news, index) => (
             <li key={index}>
-              <img className="news-img" src={news.image} alt="" />
+              {news.image && (
+                <img className="news-img" src={news.image} alt="" />
+              )}
               <section className="new-title-content-author">
                 <h3 className="news-title">{news.title}</h3>
                 <section className="new-content-author">
-                  <p className="news-description">{news.description}</p>
-                  <p className="news-source">
-                    <strong>Source:</strong> {news.source.name}
-                  </p>
+                  {news.description && (
+                    <p className="news-description">{news.description}</p>
+                  )}
+                  {news.source && (
+                    <p className="news-source">
+                      <strong>Source:</strong> {news.source.name}
+                    </p>
+                  )}
                 </section>
               </section>
             </li>

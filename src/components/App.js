@@ -5,7 +5,7 @@ const App = () => {
   const [category, setCategory] = useState("general");
   const [newsData, setNewsData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const apiKey = "bfef9e159a631389f68e80fe31cc1dfd";
+  const apiKey = "0c739cd97ef96df876af90c102c73172";
 
   useEffect(() => {
     setLoading(true);
